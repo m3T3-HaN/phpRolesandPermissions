@@ -16,11 +16,11 @@
 
         $tmp = [];
         foreach ($perms as $perm){
-            if(sizeof($searchEx) == 1 && $searchEx[0] == '*'){
+            if(sizeof($perm) == 1 && $perm[0] == '*'){
                 return true;
             }
             foreach ($searchEx as $key => $req){
-                $tmp[$key] = $req == '*' ? 1 : ($req == $perm[$key] ? 1 : 0);
+                $tmp[$key] = $perm[$key] == '*' ? 1 : ($req == $perm[$key] ? 1 : 0);
             }
             if(sizeof($perm) == array_sum($tmp)) return true;
         }

@@ -33,13 +33,13 @@ $izinler = array(
 ```php
             $tmp = []; //izin çok boyutlu olduğundan her birinin kontrol ederken geçiçi bir diziyi atama yapıyorum.
             foreach ($paracalaIzinKume as $perm){
-                if(sizeof($searchEx) == 1 && $searchEx[0] == '*'){
+                if(sizeof($perm) == 1 && $perm[0] == '*'){
                     echo 'aramaya gerek yok: adam global perm'."\n";
                     echo 'izin bulundu';
                     return true;
                 }
                 foreach ($parcalaAranan as $key => $req){
-                    $tmp[$key] = $req == '*' ? 1 : ($req == $perm[$key] ? 1 : 0);
+                    $tmp[$key] = $perm[$key] == '*' ? 1 : ($req == $perm[$key] ? 1 : 0);
                     echo 'Aranan: '.$req." == ".$perm[$key]." = ".($req == $perm[$key] ? 'var' : 'yok')."\n";
                 }
                 echo "Dizi Büyüklüğü: ".sizeof($perm)." -> Doğrulama: ".array_sum($tmp)."\n";
